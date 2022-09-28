@@ -1,7 +1,14 @@
 import React from "react";
+import Header from "../../components/navbar/header/Header";
+import Navbar from "../../components/navbar/Navbar";
 
 function List() {
-  return <div className="list">List</div>;
+  return (
+    <div>
+      <Navbar />
+      <Header type="list" />
+    </div>
+  );
 }
 
 export default List;
