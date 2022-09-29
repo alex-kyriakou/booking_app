@@ -1,0 +1,18 @@
+.footer {
+  width: 100%;
+  max-width: 1024px;
+  font-size: 12px;
+
+  .footerLists {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    .footerListItem {
+      list-style: none;
+      color: #0071c2;
+      line-height: 25px;
+      cursor: pointer;
+    }
+  }
+}
