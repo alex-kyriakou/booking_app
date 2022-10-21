@@ -4,9 +4,18 @@ import Navbar from "../components/navbar/Navbar";
 import MailList from "../components/navbar/mailList/MailList";
 import Footer from "../components/navbar/footer/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowLeft,
+  faArrowRight,
+  faCircleXmark,
+  faLocationDot,
+} from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 
 function SingleHotelPage() {
+  const [slideIndex, setSlideIndex] = useState(0);
+  const [openModal, setOpenModal] = useState(true);
+
   const images = [
     {
       src: "https://images.pexels.com/photos/7534561/pexels-photo-7534561.jpeg?cs=srgb&dl=pexels-max-vakhtbovych-7534561.jpg&fm=jpg",
@@ -27,11 +36,28 @@ function SingleHotelPage() {
       src: "https://images.pexels.com/photos/6585598/pexels-photo-6585598.jpeg?cs=srgb&dl=pexels-max-vakhtbovych-6585598.jpg&fm=jpg",
     },
   ];
+
+  const handleOpenModal = (index) => {
+    setSlideIndex(index);
+    setOpenModal(true);
+  };
+
   return (
     <div className="singleHotelPage">
       <Navbar />
       <Header type="list" />
       <div className="singleHotelPageContainer">
+        {openModal && (
+          <div className="slider">
+            <FontAwesomeIcon icon={faCircleXmark} className="exitModal" />
+            <FontAwesomeIcon icon={faArrowLeft} className="arrow" />
+            <div className="sliderWrapper">
+              <img src={images[slideIndex].src} alt="" className="sliderImg" />
+            </div>
+            <FontAwesomeIcon icon={faArrowRight} className="arrow" />
+          </div>
+        )}
+
         <div className="singleHotelPageWrapper">
           <button className="bookNow">Reserve or Book Now!</button>
           <h1 className="hotelTitle">Grand Hotel</h1>
@@ -46,9 +72,14 @@ function SingleHotelPage() {
             Book a stay over $120 at this property and get a free airport taxi
           </span>
           <div className="hotelImages">
-            {images.map((image) => (
+            {images.map((image, index) => (
               <div className="hotelImgWrapper">
-                <img src={image.src} alt="" className="hotelImg" />
+                <img
+                  onClick={() => handleOpenModal(index)}
+                  src={image.src}
+                  alt=""
+                  className="hotelImg"
+                />
               </div>
             ))}
           </div>

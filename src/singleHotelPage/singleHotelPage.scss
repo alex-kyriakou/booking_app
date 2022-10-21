@@ -4,6 +4,45 @@
   align-items: center;
   margin-top: 20px;
 
+  .slider {
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.639);
+    z-index: 100;
+
+    .exitModal {
+      position: absolute;
+      top: 30px;
+      right: 60px;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+    }
+    .sliderWrapper {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .sliderImg {
+        width: 80%;
+        height: 80vh;
+        object-fit: cover;
+      }
+    }
+    .arrow {
+      padding: 60px;
+      margin: 0;
+    }
+  }
+
   .singleHotelPageWrapper {
     width: 100%;
     max-width: 1024px;
